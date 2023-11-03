@@ -15,7 +15,12 @@ if uploaded_file is not None:
         st.image(img, use_column_width='auto')
 
     st.write(f'Format: {img.format}')
+    st.write(f'Has Transparency Data: {img.has_transparency_data}')
+    st.write(f'Mode: {img.mode}')
+    st.write(f'Bands: {img.getbands()}')
+    st.write(f'Exif data: {img.getexif()}')
     st.write(f'Size px: {img.width} x {img.height} px')
+
     if img.info:
         try:
             width_in = img.width / int(img.info["dpi"][0])
@@ -23,10 +28,6 @@ if uploaded_file is not None:
             st.write(f'Size in: {width_in:.1f} x {height_in:.1f} in')
             st.write(f'Size mm: {width_in * 25.4:.1f} x {height_in * 25.4:.1f} mm')
             st.write(f'Dpi: {img.info["dpi"][0]:.1f}')
-            st.write(f'Has Transparency Data: {img.has_transparency_data}')
-            st.write(f'Mode: {img.mode}')
-            st.write(f'Exif data: {img.getexif()}')
         except:
-            st.write(f'Has Transparency Data: {img.has_transparency_data}')
-            st.write(f'Mode: {img.mode}')
-            st.write(f'Exif data: {img.getexif()}')
+            st.write('')
+
