@@ -19,13 +19,16 @@ if uploaded_file is not None:
 
     st.write(f'Format: {img.format}')
     st.write(f'Size px: {img.width} x {img.height} px')
-    st.write(f'Size mm: {img.width * MM_CONVERSION:.1f} x {img.height * MM_CONVERSION:.1f} mm')
-    st.write(f'Size in: {img.width * IN_CONVERSION:.1f} x {img.height * IN_CONVERSION:.1f} in')
     st.write(f'Has Transparency Data: {img.has_transparency_data}')
     st.write(f'Mode: {img.mode}')
     st.write(f'Exif data: {img.getexif()}')
     if img.info:
         try:
             st.write(f'Dpi: {img.info["dpi"][0]:.1f}')
+
+            width_in = img.width / int(img.info["dpi"][0])
+            height_in = img.height / int(img.info["dpi"][0])
+            st.write(f'Size in: {width_in:.1f} x {height_in:.1f} in')
+            st.write(f'Size mm: {width_in * 25.4:.1f} x {height_in * 25.4:.1f} mm')
         except:
             st.write(f'Information: {img.info}')
