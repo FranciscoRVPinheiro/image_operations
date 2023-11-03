@@ -1,4 +1,4 @@
-from PIL import Image
+from PIL import Image, ImageDraw
 import streamlit as st
 
 st.set_page_config(
@@ -19,8 +19,11 @@ option = st.selectbox(
 
 if width and height:
 
-    create_img = Image.new('RGB', (int(width), int(height)), option)
+    desired_size = (int(width), int(height))
+
+    create_img = Image.new('RGB', desired_size, option)
 
     st.image(create_img, use_column_width='never', output_format='PNG')
+    st.write(f'Size: {create_img.width} x {create_img.height} px')
 
 
