@@ -8,9 +8,6 @@ st.set_page_config(
 
 st.title("Image Analyzer 🔎")
 
-MM_CONVERSION = 0.2645833333
-IN_CONVERSION = 0.0104166667
-
 uploaded_file = st.file_uploader("Choose an image file", type=['png', 'jpg'])
 
 if uploaded_file is not None:
